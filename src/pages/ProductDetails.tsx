@@ -2,10 +2,12 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { products } from '../data/products'
+import { useCart } from '../context/CartContext'
 import './ProductDetails.css'
 
 function ProductDetails() {
   const { id } = useParams()
+  const { addToCart } = useCart()
 
   const product = products.find(
     (item) => item.id === Number(id)
@@ -32,6 +34,7 @@ function ProductDetails() {
       return
     }
 
+    addToCart(product, selectedSize, quantity)
     setAdded(true)
   }
 

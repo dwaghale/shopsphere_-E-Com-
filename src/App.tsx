@@ -1,12 +1,17 @@
 
 import { useState } from 'react'
-import { Link, Route, Routes } from 'react-router-dom'
+import { Link, Route, Routes, useNavigate } from 'react-router-dom'
+import { useCart } from './context/CartContext'
 import { products } from './data/products'
 import ProductDetails from './pages/ProductDetails'
+import Cart from './pages/Cart'
+
 import './App.css'
 
 function HomePage() {
   const [activeCategory, setActiveCategory] = useState('All')
+  const { totalItems } = useCart()
+  const navigate = useNavigate()
 
   const filteredProducts =
     activeCategory === 'All'
@@ -35,8 +40,19 @@ function HomePage() {
         </nav>
 
         <div className="nav-actions">
-          <button className="icon-button">SEARCH</button>
-          <button className="bag-button">BAG (0)</button>
+          <button
+            className="icon-button"
+            onClick={() => navigate('/')}
+          >
+            SEARCH
+          </button>
+
+          <button
+            className="bag-button"
+            onClick={() => navigate('/cart')}
+          >
+            BAG ({totalItems})
+          </button>
         </div>
       </header>
 
@@ -139,11 +155,13 @@ function HomePage() {
 
         <section className="story" id="about">
           <p className="eyebrow">OUR PHILOSOPHY</p>
+
           <h2>
             Style isn't about more.
             <br />
             It's about meaning.
           </h2>
+
           <p>
             We believe in fewer, better things. Pieces designed
             with intention, made to be worn and loved every day.
@@ -156,6 +174,7 @@ function HomePage() {
           SHOP<span>SPHERE</span>
           <small>THE ART OF EVERYDAY</small>
         </Link>
+
         <p>© 2026 ShopSphere. All rights reserved.</p>
       </footer>
     </div>
@@ -167,6 +186,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/products/:id" element={<ProductDetails />} />
+      <Route path="/cart" element={<Cart />} />
     </Routes>
   )
 }
