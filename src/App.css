@@ -1,0 +1,422 @@
+
+#root {
+  width: 100%;
+}
+
+.app {
+  width: 100%;
+  overflow: hidden;
+}
+
+.announcement {
+  background: #171714;
+  color: #fff;
+  text-align: center;
+  padding: 11px;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.navbar {
+  height: 86px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f7f3;
+}
+
+.brand {
+  color: #171714;
+  font-family: Georgia, serif;
+  font-size: 25px;
+  letter-spacing: -1px;
+  text-decoration: none;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.brand span {
+  font-weight: 400;
+  display: inline;
+}
+
+.brand small {
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  letter-spacing: 2px;
+  margin-top: 7px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a,
+.nav-actions button {
+  text-decoration: none;
+  color: #252520;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+}
+
+.nav-links a:hover,
+.nav-actions button:hover {
+  opacity: 0.55;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.icon-button,
+.bag-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hero {
+  position: relative;
+  min-height: 570px;
+  height: 72vh;
+  max-height: 750px;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.hero-image,
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-image {
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.08)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding-left: 10%;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(65px, 9vw, 115px);
+  line-height: 0.95;
+  letter-spacing: -5px;
+  font-weight: 400;
+  margin: 25px 0;
+}
+
+.hero-description {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #eeeeea;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 35px;
+  margin-top: 25px;
+  padding: 17px 22px;
+  background: #f8f7f3;
+  color: #171714;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.hero-cta:hover {
+  background: #d8c9b5;
+}
+
+.hero-bottom {
+  position: absolute;
+  z-index: 1;
+  bottom: 25px;
+  left: 7%;
+  right: 7%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.collection {
+  padding: 100px 7%;
+  background: #f8f7f3;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.section-heading .eyebrow {
+  color: #88877f;
+}
+
+.section-heading h2,
+.story h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 400;
+  letter-spacing: -2px;
+  margin: 12px 0 0;
+}
+
+.filters {
+  display: flex;
+  gap: 20px;
+}
+
+.filter {
+  background: none;
+  border: none;
+  color: #88877f;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.filter.active {
+  color: #171714;
+  border-bottom: 1px solid #171714;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.product-image-wrap {
+  position: relative;
+  height: 340px;
+  overflow: hidden;
+  background: #eae8e1;
+}
+
+.product-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.product-card:hover .product-image-wrap img {
+  transform: scale(1.05);
+}
+
+.product-tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #f8f7f3;
+  padding: 8px 10px;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.add-button {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  padding: 14px;
+  background: #f8f7f3;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: 0.3s;
+}
+
+.product-card:hover .add-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 17px;
+  font-size: 12px;
+}
+
+.product-info h3 {
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.product-info p {
+  color: #89877e;
+  font-size: 10px;
+  margin: 0;
+}
+
+.product-info > span {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.story {
+  text-align: center;
+  padding: 110px 20px;
+  background: #eae7df;
+}
+
+.story .eyebrow {
+  color: #77746a;
+}
+
+.story h2 {
+  line-height: 1.1;
+}
+
+.story > p:last-child {
+  max-width: 450px;
+  margin: 25px auto 0;
+  font-size: 13px;
+  line-height: 1.9;
+  color: #69675e;
+}
+
+.footer {
+  background: #171714;
+  color: #fff;
+  padding: 50px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer .brand {
+  color: #fff;
+}
+
+.footer p {
+  font-size: 10px;
+  color: #aaa99f;
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 15px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product-image-wrap {
+    height: 360px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    height: 75px;
+    padding: 0 5%;
+  }
+
+  .brand {
+    font-size: 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-actions {
+    gap: 12px;
+  }
+
+  .hero {
+    min-height: 540px;
+    height: 70vh;
+  }
+
+  .hero-content {
+    padding-left: 7%;
+  }
+
+  .hero h1 {
+    font-size: 72px;
+  }
+
+  .hero-bottom {
+    font-size: 7px;
+  }
+
+  .collection {
+    padding: 65px 5%;
+  }
+
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .product-grid {
+    gap: 22px 12px;
+  }
+
+  .product-image-wrap {
+    height: 240px;
+  }
+
+  .product-info {
+    flex-direction: column;
+  }
+
+  .add-button {
+    opacity: 1;
+    transform: none;
+    padding: 11px 5px;
+    font-size: 8px;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+  }
+}
