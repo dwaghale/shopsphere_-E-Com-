@@ -2,18 +2,26 @@
 .product-details {
   background: #f8f7f3;
   min-height: 100vh;
-  padding: 35px 7% 100px;
+  padding: 30px 7% 100px;
 }
 
 .product-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 11px;
   font-size: 11px;
   color: #85837a;
-  margin-bottom: 40px;
+  margin-bottom: 42px;
+  letter-spacing: 0.3px;
 }
 
 .product-breadcrumb a {
   color: #171714;
   text-decoration: none;
+}
+
+.product-breadcrumb a:hover {
+  text-decoration: underline;
 }
 
 .details-layout {
@@ -24,6 +32,7 @@
 }
 
 .details-image {
+  position: relative;
   background: #eae8e1;
   overflow: hidden;
 }
@@ -31,37 +40,64 @@
 .details-image img {
   width: 100%;
   display: block;
-  max-height: 720px;
+  max-height: 760px;
   object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.details-image:hover img {
+  transform: scale(1.025);
+}
+
+.image-label {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  background: rgba(248, 247, 243, 0.9);
+  padding: 10px 13px;
+  font-size: 9px;
+  letter-spacing: 1.5px;
 }
 
 .details-info {
-  padding-top: 35px;
+  padding-top: 38px;
 }
 
 .details-category {
   font-size: 10px;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   color: #88877f;
+  margin-bottom: 20px;
 }
 
 .details-info h1 {
   font-family: Georgia, serif;
-  font-size: clamp(35px, 4vw, 55px);
+  font-size: clamp(36px, 4vw, 58px);
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.12;
+  color: #171714;
+  margin: 0;
 }
 
 .details-info h2 {
-  font-size: 19px;
-  margin: 25px 0;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 24px 0;
+  color: #171714;
+}
+
+.details-divider {
+  width: 100%;
+  height: 1px;
+  background: #dedbd2;
+  margin-bottom: 24px;
 }
 
 .details-description {
   font-size: 13px;
   color: #77746a;
-  line-height: 1.9;
-  max-width: 400px;
+  line-height: 2;
+  max-width: 420px;
 }
 
 .size-section,
@@ -69,24 +105,44 @@
   margin-top: 35px;
 }
 
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .size-section h3,
 .quantity-section h3 {
   font-size: 12px;
   font-weight: 600;
+  color: #171714;
+  margin: 0;
+}
+
+.section-heading span {
+  font-size: 11px;
+  color: #85837a;
 }
 
 .size-options {
   display: flex;
-  gap: 12px;
-  margin-top: 15px;
+  gap: 11px;
+  margin-top: 17px;
 }
 
 .size-option {
-  height: 45px;
-  width: 45px;
+  height: 46px;
+  width: 46px;
   border: 1px solid #d5d2c9;
   background: transparent;
+  color: #171714;
   cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 12px;
+}
+
+.size-option:hover {
+  border-color: #171714;
 }
 
 .size-option.selected {
@@ -98,11 +154,12 @@
 .quantity-control {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 25px;
   border: 1px solid #d5d2c9;
-  width: fit-content;
-  padding: 10px 15px;
-  margin-top: 15px;
+  width: 125px;
+  padding: 10px 14px;
+  margin-top: 16px;
 }
 
 .quantity-control button {
@@ -110,28 +167,42 @@
   background: transparent;
   cursor: pointer;
   font-size: 18px;
+  color: #171714;
+  padding: 0 4px;
+}
+
+.quantity-control span {
+  font-size: 13px;
 }
 
 .details-add-button {
   margin-top: 35px;
   width: 100%;
-  padding: 19px;
+  padding: 20px;
   background: #171714;
   color: white;
-  border: none;
-  font-size: 11px;
-  letter-spacing: 1px;
+  border: 1px solid #171714;
+  font-size: 10px;
+  letter-spacing: 1.5px;
   cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .details-add-button:hover {
-  background: #49483f;
+  background: transparent;
+  color: #171714;
 }
 
 .added-message {
   color: #47704b;
   font-size: 12px;
   margin-top: 15px;
+  line-height: 1.7;
+}
+
+.added-message a {
+  color: #171714;
+  margin-left: 5px;
 }
 
 .details-extra {
@@ -143,6 +214,17 @@
   line-height: 2;
 }
 
+.details-extra p {
+  margin: 5px 0;
+}
+
+.details-footer-note {
+  margin-top: 30px;
+  font-size: 9px;
+  letter-spacing: 1.8px;
+  color: #99968c;
+}
+
 .not-found {
   padding: 100px 20px;
   text-align: center;
@@ -152,13 +234,54 @@
   color: #171714;
 }
 
+@media (max-width: 900px) {
+  .details-layout {
+    gap: 5%;
+  }
+
+  .details-info {
+    padding-top: 15px;
+  }
+}
+
 @media (max-width: 700px) {
+  .product-details {
+    padding: 25px 5% 70px;
+  }
+
+  .product-breadcrumb {
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+  }
+
   .details-layout {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 30px;
+  }
+
+  .details-image img {
+    max-height: 600px;
   }
 
   .details-info {
     padding-top: 0;
+  }
+
+  .details-info h1 {
+    font-size: 38px;
+  }
+
+  .details-add-button {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 380px) {
+  .details-info h1 {
+    font-size: 32px;
+  }
+
+  .section-heading span {
+    font-size: 10px;
   }
 }

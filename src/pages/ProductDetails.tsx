@@ -41,17 +41,23 @@ function ProductDetails() {
   return (
     <main className="product-details">
       <div className="product-breadcrumb">
-        <Link to="/">Home</Link> / {product.category} / {product.name}
+        <Link to="/">Home</Link>
+        <span>/</span>
+        <span>{product.category}</span>
+        <span>/</span>
+        <span>{product.name}</span>
       </div>
 
       <div className="details-layout">
+
         <div className="details-image">
           <img src={product.image} alt={product.name} />
+          <span className="image-label">SHOPSPHERE COLLECTION</span>
         </div>
 
         <div className="details-info">
           <p className="details-category">
-            SHOPSPHERE ESSENTIALS
+            THE EVERYDAY COLLECTION
           </p>
 
           <h1>{product.name}</h1>
@@ -60,12 +66,17 @@ function ProductDetails() {
             ₹{product.price.toLocaleString('en-IN')}
           </h2>
 
+          <div className="details-divider" />
+
           <p className="details-description">
             {product.description}
           </p>
 
           <div className="size-section">
-            <h3>Select Size</h3>
+            <div className="section-heading">
+              <h3>Select Size</h3>
+              <span>{selectedSize ? `Selected: ${selectedSize}` : 'Choose your size'}</span>
+            </div>
 
             <div className="size-options">
               {sizes.map((size) => (
@@ -80,6 +91,7 @@ function ProductDetails() {
                     setSelectedSize(size)
                     setAdded(false)
                   }}
+                  aria-pressed={selectedSize === size}
                 >
                   {size}
                 </button>
@@ -113,20 +125,27 @@ function ProductDetails() {
             className="details-add-button"
             onClick={handleAddToCart}
           >
-            ADD TO BAG — ₹{(product.price * quantity).toLocaleString('en-IN')}
+            {added
+              ? 'ADDED TO BAG ✓'
+              : `ADD TO BAG — ₹${(product.price * quantity).toLocaleString('en-IN')}`}
           </button>
 
           {added && (
             <p className="added-message">
-              ✓ Added to bag — {quantity} item(s), size {selectedSize}.
+              ✓ Successfully added {quantity} item(s), size {selectedSize}.
+              <Link to="/cart"> View Bag</Link>
             </p>
           )}
 
           <div className="details-extra">
             <p>✓ Premium quality essentials</p>
             <p>✓ Easy returns and exchanges</p>
-            <p>✓ Secure checkout</p>
+            <p>✓ Secure shopping experience</p>
           </div>
+
+          <p className="details-footer-note">
+            LESS, BUT BETTER. MADE FOR EVERYDAY.
+          </p>
         </div>
       </div>
     </main>

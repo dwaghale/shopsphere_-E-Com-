@@ -110,12 +110,9 @@ function Cart() {
               <strong>₹{totalPrice.toLocaleString('en-IN')}</strong>
             </div>
 
-            <button
-              className="checkout-button"
-              onClick={() => alert('Checkout will be available soon.')}
-            >
+            <Link to="/checkout" className="checkout-button">
               PROCEED TO CHECKOUT
-            </button>
+            </Link>
 
             <Link to="/" className="continue-link">
               CONTINUE SHOPPING

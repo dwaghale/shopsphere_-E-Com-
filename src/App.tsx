@@ -5,7 +5,8 @@ import { useCart } from './context/CartContext'
 import { products } from './data/products'
 import ProductDetails from './pages/ProductDetails'
 import Cart from './pages/Cart'
-
+import Checkout from './pages/Checkout'
+import OrderSuccess from './pages/OrderSuccess'
 import './App.css'
 
 function HomePage() {
@@ -187,6 +188,8 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/products/:id" element={<ProductDetails />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/order-success" element={<OrderSuccess />} />
     </Routes>
   )
 }

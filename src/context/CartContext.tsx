@@ -16,30 +16,17 @@ export type CartItem = Product & {
 
 type CartContextType = {
   cartItems: CartItem[]
-  addToCart: (
-    product: Product,
-    size: string,
-    quantity: number
-  ) => void
+  addToCart: (product: Product, size: string, quantity: number) => void
   removeFromCart: (id: number, size: string) => void
-  updateQuantity: (
-    id: number,
-    size: string,
-    quantity: number
-  ) => void
+  updateQuantity: (id: number, size: string, quantity: number) => void
+  clearCart: () => void
   totalItems: number
   totalPrice: number
 }
 
-const CartContext = createContext<CartContextType | undefined>(
-  undefined
-)
+const CartContext = createContext<CartContextType | undefined>(undefined)
 
-export function CartProvider({
-  children,
-}: {
-  children: ReactNode
-}) {
+export function CartProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     try {
       const savedCart = localStorage.getItem('shopsphere-cart')
@@ -50,58 +37,36 @@ export function CartProvider({
   })
 
   useEffect(() => {
-    localStorage.setItem(
-      'shopsphere-cart',
-      JSON.stringify(cartItems)
-    )
+    localStorage.setItem('shopsphere-cart', JSON.stringify(cartItems))
   }, [cartItems])
 
-  const addToCart = (
-    product: Product,
-    size: string,
-    quantity: number
-  ) => {
+  const addToCart = (product: Product, size: string, quantity: number) => {
     setCartItems((currentItems) => {
       const existingItem = currentItems.find(
-        (item) =>
-          item.id === product.id &&
-          item.selectedSize === size
+        (item) => item.id === product.id && item.selectedSize === size
       )
 
       if (existingItem) {
         return currentItems.map((item) =>
-          item.id === product.id &&
-          item.selectedSize === size
+          item.id === product.id && item.selectedSize === size
             ? { ...item, quantity: item.quantity + quantity }
             : item
         )
       }
 
-      return [
-        ...currentItems,
-        {
-          ...product,
-          selectedSize: size,
-          quantity,
-        },
-      ]
+      return [...currentItems, { ...product, selectedSize: size, quantity }]
     })
   }
 
   const removeFromCart = (id: number, size: string) => {
     setCartItems((currentItems) =>
       currentItems.filter(
-        (item) =>
-          !(item.id === id && item.selectedSize === size)
+        (item) => !(item.id === id && item.selectedSize === size)
       )
     )
   }
 
-  const updateQuantity = (
-    id: number,
-    size: string,
-    quantity: number
-  ) => {
+  const updateQuantity = (id: number, size: string, quantity: number) => {
     setCartItems((currentItems) =>
       currentItems.map((item) =>
         item.id === id && item.selectedSize === size
@@ -111,14 +76,16 @@ export function CartProvider({
     )
   }
 
+  const clearCart = () => {
+    setCartItems([])
+  }
+
   const totalItems = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
+    (total, item) => total + item.quantity, 0
   )
 
   const totalPrice = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
+    (total, item) => total + item.price * item.quantity, 0
   )
 
   return (
@@ -128,6 +95,7 @@ export function CartProvider({
         addToCart,
         removeFromCart,
         updateQuantity,
+        clearCart,
         totalItems,
         totalPrice,
       }}

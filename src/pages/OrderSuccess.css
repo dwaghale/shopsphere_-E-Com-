@@ -1,0 +1,136 @@
+
+.order-success {
+  min-height: 85vh;
+  background: #f8f7f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.success-card {
+  width: 100%;
+  max-width: 570px;
+  text-align: center;
+  padding: 50px 45px;
+  background: #fff;
+}
+
+.success-check {
+  width: 55px;
+  height: 55px;
+  border: 1px solid #171714;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 25px;
+  font-size: 23px;
+}
+
+.success-eyebrow {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #85837a;
+}
+
+.success-card h1 {
+  font-family: Georgia, serif;
+  font-size: 43px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 20px 0;
+}
+
+.success-description {
+  font-size: 12px;
+  color: #85837a;
+  line-height: 1.9;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.success-order-id {
+  margin: 35px 0;
+  padding: 20px;
+  background: #f4f2ec;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.success-order-id span,
+.success-address > span {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: #85837a;
+}
+
+.success-order-id strong {
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.success-details {
+  border-top: 1px solid #e5e2da;
+  border-bottom: 1px solid #e5e2da;
+  padding: 20px 0;
+  display: grid;
+  gap: 17px;
+}
+
+.success-details > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  text-align: left;
+  font-size: 12px;
+}
+
+.success-details span {
+  color: #85837a;
+}
+
+.success-details strong {
+  font-weight: 500;
+}
+
+.success-address {
+  margin: 28px 0;
+}
+
+.success-address p {
+  font-size: 12px;
+  color: #77746a;
+  line-height: 1.8;
+}
+
+.success-email {
+  font-size: 11px;
+  color: #85837a;
+  margin-bottom: 25px;
+}
+
+.success-home-button {
+  display: block;
+  padding: 18px;
+  background: #171714;
+  color: white;
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  transition: 0.25s;
+}
+
+.success-home-button:hover {
+  background: #49483f;
+}
+
+@media (max-width: 500px) {
+  .success-card {
+    padding: 35px 20px;
+  }
+
+  .success-card h1 {
+    font-size: 35px;
+  }
+}
